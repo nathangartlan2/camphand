@@ -33,11 +33,13 @@ camphand/
 ### Backend Setup
 
 1. Navigate to the backend directory:
+
    ```bash
    cd backend
    ```
 
 2. Install Python dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
@@ -52,11 +54,13 @@ The backend will be available at `http://localhost:8000`
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
+
    ```bash
    cd frontend
    ```
 
 2. Install npm dependencies:
+
    ```bash
    npm install
    ```
@@ -68,18 +72,20 @@ The backend will be available at `http://localhost:8000`
 
 The frontend will be available at `http://localhost:5173`
 
-## Running the Application
+## Running the Application (For Development)
 
 1. **Start the Backend** (in one terminal):
+
    ```bash
    cd backend
    uvicorn main:app --reload --host 0.0.0.0 --port 8000
    ```
 
 2. **Start the Frontend** (in another terminal):
+
    ```bash
    cd frontend
-   npm run dev
+   npm run dev -- --mode dev
    ```
 
 3. Open your browser and navigate to `http://localhost:5173`

@@ -1,29 +1,26 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import ApiClient from "./services/apiClient";
+
+const client = new ApiClient();
 
 function App() {
-  const [message, setMessage] = useState('Loading...')
-  const [error, setError] = useState(null)
+  const [message, setMessage] = useState("Loading...");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch data from FastAPI backend
-    fetch('http://localhost:8000/api')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
+    client
+      .get("")
+      .then((response) => {
+        setMessage(response.message);
+        setError(null);
       })
-      .then(data => {
-        setMessage(data.message)
-        setError(null)
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error)
-        setError('Failed to fetch data from API')
-        setMessage('')
-      })
-  }, [])
+      .catch((ex) => {
+        console.error("Error fetching data:", ex);
+        setError("Failed to fetch data from API");
+        setMessage("");
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -39,7 +36,7 @@ function App() {
         The message above is fetched from the FastAPI backend
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
