@@ -21,7 +21,7 @@ info:
     url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: http://localhost:8000
+  - url: https://camphand-api.fly.dev/
     description: Development server
 
 tags:
