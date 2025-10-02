@@ -11,7 +11,7 @@ services:
   server:
     build:
       context: .
-      dockerfile: ${DOCKERFILE:-Dockerfile.dev} # Use env var to switch between dev/debug
+      dockerfile: Dockerfile.${ENV:-debug} # Use env var to switch between dev/debug
     ports:
       - 8000:8000
       - 5678:5678 # Debug port
