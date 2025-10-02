@@ -11,9 +11,10 @@ services:
   server:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: ${DOCKERFILE:-Dockerfile.dev} # Use env var to switch between dev/debug
     ports:
       - 8000:8000
+      - 5678:5678 # Debug port
     volumes:
       # Mount source code for hot reloading
       - ./app:/code/app

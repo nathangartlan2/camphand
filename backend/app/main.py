@@ -30,7 +30,7 @@ app.add_middleware(
 @app.get("/api")
 def get_message():
     """GET endpoint that returns 'Hello API'"""
-    return {"message": "Hello API"}
+    return {"message": "Hello Nathan's API"}
 
 
 @app.get("/health")

@@ -1,0 +1,17 @@
+ARG PYTHON_VERSION=3.13.6
+FROM python:${PYTHON_VERSION}-slim AS base
+
+WORKDIR /code
+
+# Install requirements including debugpy
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+# Copy app code (will be overridden by volume mount for hot reload)
+COPY ./app /code/app
+
+# Expose port 8000 for the API and 5678 for debugger
+EXPOSE 8000 5678
+
+# For debugging: Start with debugpy using FastAPI dev command
+CMD ["python", "-m", "debugpy", "--listen", "0.0.0.0:5678", "-m", "fastapi", "dev", "app/main.py", "--host", "0.0.0.0", "--port", "8000"]

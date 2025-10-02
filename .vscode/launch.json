@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Remote Attach (Docker)",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/backend/app",
+                    "remoteRoot": "/code/app"
+                }
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: FastAPI Dev (Local)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/app/main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/backend",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/backend"
+            }
+        }
+    ]
+}
