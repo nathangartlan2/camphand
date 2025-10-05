@@ -4,7 +4,7 @@ When you're ready, start your application by running:
 `docker compose up --build`.
 
 Start application in debug mode:
-`DOCKERFILE=Dockerfile.debug docker compose up --build`
+`ENV=debug docker compose up --build`
 
 Your application will be available at http://localhost:8000.
 
